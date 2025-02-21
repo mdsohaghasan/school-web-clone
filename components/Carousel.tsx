@@ -43,8 +43,8 @@ export function Carousel() {
           <Image src={slide.image || "/placeholder.svg"} alt={slide.title} layout="fill" objectFit="cover" />
           <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
             <div className="text-center text-white">
-              <h2 className="text-4xl font-bold mb-4">{slide.title}</h2>
-              <p className="text-xl">{slide.description}</p>
+              <h2 className="text-4xl font-bold mb-4" style={{ fontFamily: 'Hind Siliguri' }}>{slide.title}</h2>
+              <p className="text-xl" style={{ fontFamily: 'Hind Siliguri' }}>{slide.description}</p>
             </div>
           </div>
         </div>

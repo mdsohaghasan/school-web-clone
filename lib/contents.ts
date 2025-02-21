@@ -4,7 +4,7 @@ export const heroSection = {
   title: "হাবরুল উম্মাহ মডেল মাদরাসা",
   subtitle: "জ্ঞান, মূল্যবোধ এবং উৎকর্ষের কেন্দ্র",
   ctaText: "আরও জানুন",
-  backgroundImage: "/header/hero.jpg",
+  backgroundImage: "/images/header/hero.jpg",
 };
 
 export const aboutSection = {

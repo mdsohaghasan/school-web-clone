@@ -36,10 +36,10 @@ export function NoticeBoard() {
           <li key={notice.id}>
             <Link href={notice.link} className="block hover:bg-gray-100 p-2 rounded transition duration-300">
               <div className="flex items-start">
-                <FaBullhorn className="text-green-600 mt-1 mr-2 flex-shrink-0" />
+                <FaBullhorn className="text-blue-600 mt-1 mr-2 flex-shrink-0" style={{ fontFamily: 'Hind Siliguri' }} />
                 <div>
-                  <h4 className="font-semibold">{notice.title}</h4>
-                  <p className="text-sm text-gray-600">{notice.date}</p>
+                  <h4 className="font-semibold" style={{ fontFamily: 'Hind Siliguri' }}>{notice.title}</h4>
+                  <p className="text-sm text-gray-600" style={{ fontFamily: 'Hind Siliguri' }}>{notice.date}</p>
                 </div>
               </div>
             </Link>
@@ -47,7 +47,7 @@ export function NoticeBoard() {
         ))}
       </ul>
       <div className="mt-4 text-center">
-        <Link href="/notices" className="text-green-600 hover:underline">
+        <Link href="/notices" className="text-blue-600 hover:underline" style={{ fontFamily: 'Hind Siliguri' }}>
           সকল নোটিশ দেখুন
         </Link>
       </div>

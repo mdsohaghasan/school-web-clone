@@ -1,5 +1,5 @@
 import Navbar from "@/components/Navbar";
-import { Inter } from "next/font/google";
+import { Inter, Hind Siliguri } from "next/font/google";
 import type React from "react"; // Import React
 import "./globals.css";
 

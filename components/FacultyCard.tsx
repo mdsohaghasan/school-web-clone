@@ -12,8 +12,8 @@ export function FacultyCard({ name, designation, image }: FacultyCardProps) {
       <div className="relative w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden">
         <Image src={image || "/placeholder.svg"} alt={name} layout="fill" objectFit="cover" />
       </div>
-      <h3 className="text-xl font-semibold mb-2">{name}</h3>
-      <p className="text-green-600">{designation}</p>
+      <h3 className="text-xl font-semibold mb-2" style={{ fontFamily: 'Hind Siliguri' }}>{name}</h3>
+      <p className="text-blue-600" style={{ fontFamily: 'Hind Siliguri' }}>{designation}</p>
     </div>
   )
 }

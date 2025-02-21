@@ -1,8 +1,8 @@
 "use client"
 
-import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
+import { useState } from "react"
 import { FaSearch } from "react-icons/fa"
 
 const books = [
@@ -64,44 +64,49 @@ const books = [
   },
 ]
 
+const categories = ["সকল", "ইতিহাস", "তাফসীর", "হাদিস", "আইন", "দর্শন", "অর্থনীতি", "জীবনী", "বিজ্ঞান"]
+
 export default function BooksPage() {
   const [searchTerm, setSearchTerm] = useState("")
   const [selectedCategory, setSelectedCategory] = useState("সকল")
-
-  const categories = ["সকল", "ইতিহাস", "তাফসীর", "হাদিস", "আইন", "দর্শন", "অর্থনীতি", "জীবনী", "বিজ্ঞান"]
 
   const filteredBooks = books.filter(
     (book) =>
       (selectedCategory === "সকল" || book.category === selectedCategory) &&
       (book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        book.author.toLowerCase().includes(searchTerm.toLowerCase())),
+        book.author.toLowerCase().includes(searchTerm.toLowerCase()))
   )
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
+    <div className="min-h-screen bg-background pt-24">
       <div className="container mx-auto px-4">
-        <h1 className="text-4xl font-bold text-center mb-12">বইয়ের সংগ্রহশালা</h1>
+        <h1 className="text-4xl font-bold mb-8 text-foreground font-hind-siliguri">
+          বই সমূহ
+        </h1>
 
-        <div className="flex flex-col md:flex-row justify-between items-center mb-8">
-          <div className="relative w-full md:w-1/3 mb-4 md:mb-0">
+        {/* Search and Categories */}
+        <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
+          <div className="relative w-full md:w-1/3">
             <input
               type="text"
               placeholder="বই বা লেখক খুঁজুন"
-              className="w-full pl-10 pr-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600"
+              className="w-full pl-10 pr-4 py-2 rounded-full bg-card border border-border focus:outline-none focus:ring-2 focus:ring-primary text-foreground font-hind-siliguri"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
-            <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+            <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" />
           </div>
 
           <div className="flex flex-wrap justify-center gap-2">
             {categories.map((category) => (
               <button
                 key={category}
-                className={`px-4 py-2 rounded-full ${
-                  selectedCategory === category ? "bg-green-600 text-white" : "bg-white text-gray-700 hover:bg-gray-100"
-                }`}
                 onClick={() => setSelectedCategory(category)}
+                className={`px-4 py-2 rounded-full font-hind-siliguri transition-colors ${
+                  selectedCategory === category
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-card text-foreground hover:bg-muted"
+                }`}
               >
                 {category}
               </button>
@@ -109,29 +114,42 @@ export default function BooksPage() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* Books Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {filteredBooks.map((book) => (
-            <div
-              key={book.id}
-              className="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300"
-            >
-              <Image
-                src={book.cover || "/placeholder.svg"}
-                alt={book.title}
-                width={300}
-                height={400}
-                className="w-full h-64 object-cover"
-              />
+            <div key={book.id} className="bg-card rounded-lg shadow-md overflow-hidden">
+              <div className="relative h-64">
+                <Image
+                  src={book.cover}
+                  alt={book.title}
+                  layout="fill"
+                  objectFit="cover"
+                />
+              </div>
               <div className="p-4">
-                <h3 className="text-xl font-semibold mb-2">{book.title}</h3>
-                <p className="text-gray-600 mb-4">{book.author}</p>
-                <Link href={`/books/${book.id}`} className="text-green-600 hover:text-green-700 font-semibold">
+                <h3 className="text-xl font-semibold mb-2 text-card-foreground font-hind-siliguri">
+                  {book.title}
+                </h3>
+                <p className="text-muted-foreground mb-4 font-hind-siliguri">{book.author}</p>
+                <Link
+                  href={`/books/${book.id}`}
+                  className="inline-block bg-primary text-primary-foreground px-4 py-2 rounded-md hover:bg-primary/90 transition duration-300 font-hind-siliguri"
+                >
                   বিস্তারিত দেখুন
                 </Link>
               </div>
             </div>
           ))}
         </div>
+
+        {/* No Results Message */}
+        {filteredBooks.length === 0 && (
+          <div className="text-center py-8">
+            <p className="text-muted-foreground font-hind-siliguri">
+              কোন বই পাওয়া যায়নি। অনুগ্রহ করে অন্য কিছু খুঁজুন।
+            </p>
+          </div>
+        )}
       </div>
     </div>
   )

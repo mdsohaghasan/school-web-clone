@@ -19,9 +19,9 @@ export function StatCard({ title, value, icon }: StatCardProps) {
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-md text-center">
-      <Icon className="text-4xl text-green-600 mx-auto mb-4" />
-      <h3 className="text-xl font-semibold mb-2">{title}</h3>
-      <p className="text-3xl font-bold text-green-700">{value}</p>
+      <Icon className="text-4xl text-blue-600 mx-auto mb-4" />
+      <h3 className="text-xl font-semibold mb-2" style={{ fontFamily: 'Hind Siliguri' }}>{title}</h3>
+      <p className="text-3xl font-bold text-blue-700" style={{ fontFamily: 'Hind Siliguri' }}>{value}</p>
     </div>
   )
 }
