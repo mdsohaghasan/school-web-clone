@@ -21,15 +21,15 @@ export default function Home() {
       >
         <div className="absolute inset-0 bg-black opacity-50"></div>
         <div className="text-center text-white z-10">
-          <h1 className="text-5xl md:text-7xl font-bold mb-4 text-primary-foreground animate-fade-in-up font-hind-siliguri">
+          <h1 className="text-5xl md:text-7xl font-bold mb-4 text-primary-foreground animate-fade-in-up ">
             {heroSection.title}
           </h1>
-          <p className="text-xl md:text-2xl mb-8 animate-fade-in-up animation-delay-300 font-hind-siliguri">
+          <p className="text-xl md:text-2xl mb-8 animate-fade-in-up animation-delay-300 ">
             {heroSection.subtitle}
           </p>
           <Link
             href="#about"
-            className="bg-primary text-primary-foreground px-8 py-3 rounded-full text-lg font-semibold hover:bg-primary/90 transition duration-300 animate-fade-in-up animation-delay-600 font-hind-siliguri"
+            className="bg-primary text-primary-foreground px-8 py-3 rounded-full text-lg font-semibold hover:bg-primary/90 transition duration-300 animate-fade-in-up animation-delay-600"
           >
             {heroSection.ctaText}
           </Link>
