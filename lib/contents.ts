@@ -13,7 +13,7 @@ export const aboutSection = {
   features: [
     {
       icon: FaUserGraduate,
-      text: "মাদানী আলেমের তত্ত্বাবধানে পরিচালিত",
+      text: "মাদানী আলেমের তত্ত্বাবধানে প্রতিষ্ঠিত ও পরিচালিত",
     },
     {
       icon: FaChalkboardTeacher,
