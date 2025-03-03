@@ -38,7 +38,7 @@ export default function ContactPage() {
               <FaMapMarkerAlt className="text-primary text-xl mt-1" />
               <div>
                 <h3 className="font-semibold">ঠিকানা</h3>
-                <p className="text-gray-600">Rajibpur, (Near Habib Ullah's Shop), Lakshmipur Sadar, Lakshmipur 3720</p>
+                <p className="text-gray-600">Rajibpur, (Near Habib Ullah&apos;s Shop), Lakshmipur Sadar, Lakshmipur 3720</p>
               </div>
             </div>
 

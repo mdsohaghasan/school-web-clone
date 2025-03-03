@@ -8,7 +8,7 @@ import { Gallery } from "@/components/Gallery"
 import { NoticeBoard } from "@/components/NoticeBoard"
 import { StatCard } from "@/components/StatCard"
 import { VideoPreview } from "@/components/VideoPreview"
-import { aboutSection, eventsSection, facultySection, heroSection, statsSection } from "@/lib/contents"
+import { aboutSection, eventsSection, facultySection, statsSection } from "@/lib/contents"
 import Image from "next/image"
 import Link from "next/link"
 
