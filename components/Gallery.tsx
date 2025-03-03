@@ -5,12 +5,12 @@ import Image from "next/image"
 import { FaTimes } from "react-icons/fa"
 
 const images = [
-  "/gallery/image1.jpg",
-  "/gallery/image2.jpg",
-  "/gallery/image3.jpg",
-  "/gallery/image4.jpg",
-  "/gallery/image5.jpg",
-  "/gallery/image6.jpg",
+  "/images/dummy/gallery/gallery-1.jpg",
+  "/images/dummy/gallery/gallery-2.jpg",
+  "/images/dummy/gallery/gallery-3.jpg",
+  "/images/dummy/gallery/gallery-4.jpg",
+  "/images/dummy/gallery/gallery-5.jpg",
+  "/images/dummy/gallery/gallery-6.jpg",
 ]
 
 export function Gallery() {

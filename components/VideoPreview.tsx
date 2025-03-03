@@ -7,22 +7,25 @@ const featuredVideos = [
   {
     id: "1",
     title: "ইসলামের মৌলিক শিক্ষা",
-    description: "এই ভিডিওতে ইসলামের মৌলিক শিক্ষা সম্পর্কে আলোচনা করা হয়েছে। ইসলামের পাঁচটি স্তম্ভ, ঈমান, ইবাদত, এবং নৈতিকতার বিষয়ে বিস্তারিত আলোচনা করা হয়েছে।",
-    url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    description:
+      "এই ভিডিওতে ইসলামের মৌলিক শিক্ষা সম্পর্কে আলোচনা করা হয়েছে। ইসলামের পাঁচটি স্তম্ভ, ঈমান, ইবাদত, এবং নৈতিকতার বিষয়ে বিস্তারিত আলোচনা করা হয়েছে।",
+    url: "https://www.youtube.com/watch?v=nTi7bKL6g_I",
   },
   {
     id: "2",
     title: "কুরআন তিলাওয়াত",
-    description: "সুন্দর কুরআন তিলাওয়াতের একটি নমুনা। এই ভিডিওতে একজন বিশিষ্ট ক্বারী কুরআনের কয়েকটি সূরা তিলাওয়াত করেছেন।",
-    url: "https://www.youtube.com/watch?v=21X5lGlDOfg",
+    description:
+      "সুন্দর কুরআন তিলাওয়াতের একটি নমুনা। এই ভিডিওতে একজন বিশিষ্ট ক্বারী কুরআনের কয়েকটি সূরা তিলাওয়াত করেছেন।",
+    url: "https://www.youtube.com/watch?v=3n-T8SK_hJo",
   },
   {
     id: "3",
     title: "হাদিসের গুরুত্ব",
-    description: "ইসলামে হাদিসের গুরুত্ব সম্পর্কে একটি আলোচনা। হাদিস কীভাবে ইসলামি জীবনযাপনে সাহায্য করে এবং কুরআনের ব্যাখ্যা প্রদান করে তা বিস্তারিতভাবে আলোচনা করা হয়েছে।",
-    url: "https://www.youtube.com/watch?v=FjHGZj2IjBk",
-  }
-]
+    description:
+      "ইসলামে হাদিসের গুরুত্ব সম্পর্কে একটি আলোচনা। হাদিস কীভাবে ইসলামি জীবনযাপনে সাহায্য করে এবং কুরআনের ব্যাখ্যা প্রদান করে তা বিস্তারিতভাবে আলোচনা করা হয়েছে।",
+    url: "https://www.youtube.com/watch?v=_RnlSKb9TMQ",
+  },
+];
 
 export function VideoPreview() {
   return (
@@ -38,10 +41,10 @@ export function VideoPreview() {
                 <VideoPlayer url={video.url} />
               </div>
               <div className="p-4">
-                <h3 className="text-xl font-semibold mb-2 text-card-foreground font-hind-siliguri">
+                <h3 className="text-xl font-semibold mb-2 text-high font-hind-siliguri">
                   {video.title}
                 </h3>
-                <p className="text-muted-foreground font-hind-siliguri">{video.description}</p>
+                <p className="text-mid font-hind-siliguri">{video.description}</p>
               </div>
             </div>
           ))}

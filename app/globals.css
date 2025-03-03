@@ -63,6 +63,7 @@
   --font-akhand-bengali: var(--font-akhand-bengali);
   --font-hind-siliguri: var(--font-hind-siliguri);
   --font-hind-siliguri-medium: var(--font-hind-siliguri-medium);
+
 }
 
 :root {
@@ -90,6 +91,8 @@
   --chart-3: hsl(84 45% 92%); /* #E8F1D4 */
   --chart-4: hsl(0 0% 75%); /* #BEC5BB */
   --chart-5: hsl(60 11% 96%); /* #F5F6F6 */
+  --high: #212121;
+  --mid: #666666;
   --radius: 0.6rem;
   --font-hasan-hera: 'HasanHera';
   --font-geist-sans: 'Geist Sans';
@@ -152,6 +155,8 @@
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
+  --color-high: var(--high);
+  --color-mid: var(--mid);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);

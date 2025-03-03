@@ -1,9 +1,9 @@
+import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import { Inter, Hind_Siliguri } from "next/font/google";
-import type React from "react"; // Import React
+import { Hind_Siliguri } from "next/font/google";
+import type React from "react";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] })
 const HindSiliguri = Hind_Siliguri({ 
   weight: ['400', '500', '600', '700'],
   subsets: ["latin"] 
@@ -21,9 +21,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body suppressHydrationWarning={true} className={`${HindSiliguri.className} font-bold`}>
-        <Navbar />
+      <body suppressHydrationWarning={true} className={`${HindSiliguri.className} font-regular`}>
+        <Navbar /> 
         {children}
+        <Footer />
       </body>
     </html>
   )

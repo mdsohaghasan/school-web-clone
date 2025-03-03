@@ -1,72 +1,78 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { FaSearch } from "react-icons/fa"
 import { VideoPlayer } from "@/components/VideoPlayer"
+import { useState } from "react"
+import { FaSearch } from "react-icons/fa"
 
-interface Video {
-  id: string
-  title: string
-  description: string
-  youtubeId: string
-  views: string
-  date: string
-}
+const videos = [
+  {
+    id: "1",
+    title: "ইসলামের মৌলিক শিক্ষা",
+    description: "এই ভিডিওতে ইসলামের মৌলিক শিক্ষা সম্পর্কে আলোচনা করা হয়েছে।",
+    url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    duration: "45:30",
+    date: "১০ জুন, ২০২৩",
+    category: "ইসলামিক শিক্ষা"
+  },
+  {
+    id: "2",
+    title: "কুরআন তিলাওয়াত",
+    description: "সুন্দর কুরআন তিলাওয়াতের একটি নমুনা।",
+    url: "https://www.youtube.com/watch?v=21X5lGlDOfg",
+    duration: "32:15",
+    date: "১৫ জুন, ২০২৩",
+    category: "কুরআন"
+  },
+  {
+    id: "3",
+    title: "হাদিসের গুরুত্ব",
+    description: "ইসলামে হাদিসের গুরুত্ব সম্পর্কে একটি আলোচনা।",
+    url: "https://www.youtube.com/watch?v=FjHGZj2IjBk",
+    duration: "28:45",
+    date: "২০ জুন, ২০২৩",
+    category: "হাদিস"
+  },
+  {
+    id: "4",
+    title: "ইসলামি আইন",
+    description: "ইসলামি আইন সম্পর্কে বিস্তারিত আলোচনা।",
+    url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    duration: "52:10",
+    date: "২৫ জুন, ২০২৩",
+    category: "ফিকাহ"
+  },
+  {
+    id: "5",
+    title: "ইসলামি ইতিহাস",
+    description: "ইসলামের প্রাথমিক যুগের ইতিহাস সম্পর্কে আলোচনা।",
+    url: "https://www.youtube.com/watch?v=21X5lGlDOfg",
+    duration: "38:20",
+    date: "৩০ জুন, ২০২৩",
+    category: "ইতিহাস"
+  },
+  {
+    id: "6",
+    title: "আরবি ভাষা শিক্ষা",
+    description: "আরবি ভাষার মৌলিক নিয়ম সম্পর্কে শিক্ষা।",
+    url: "https://www.youtube.com/watch?v=FjHGZj2IjBk",
+    duration: "42:55",
+    date: "৫ জুলাই, ২০২৩",
+    category: "ভাষা"
+  }
+]
+
+const categories = ["সকল", "ইসলামিক শিক্ষা", "কুরআন", "হাদিস", "ফিকাহ", "ইতিহাস", "ভাষা"]
 
 export default function VideosPage() {
   const [searchTerm, setSearchTerm] = useState("")
-  const [videos, setVideos] = useState<Video[]>([])
-  const [currentVideo, setCurrentVideo] = useState<Video | null>(null)
+  const [selectedCategory, setSelectedCategory] = useState("সকল")
 
-  useEffect(() => {
-    // Simulating API call
-    const fetchVideos = async () => {
-      // In a real application, this would be an API call
-      const mockVideos: Video[] = [
-        {
-          id: "1",
-          title: "ইসলামের মৌলিক শিক্ষা",
-          description:
-            "এই ভিডিওতে ইসলামের মৌলিক শিক্ষা সম্পর্কে আলোচনা করা হয়েছে। ইসলামের পাঁচটি স্তম্ভ, ঈমান, ইবাদত, এবং নৈতিকতার বিষয়ে বিস্তারিত আলোচনা করা হয়েছে।",
-          youtubeId: "dQw4w9WgXcQ",
-          views: "15K",
-          date: "2 দিন আগে",
-        },
-        {
-          id: "2",
-          title: "কুরআন তিলাওয়াত",
-          description: "সুন্দর কুরআন তিলাওয়াতের একটি নমুনা। এই ভিডিওতে একজন বিশিষ্ট ক্বারী কুরআনের কয়েকটি সূরা তিলাওয়াত করেছেন।",
-          youtubeId: "21X5lGlDOfg",
-          views: "20K",
-          date: "1 সপ্তাহ আগে",
-        },
-        {
-          id: "3",
-          title: "হাদিসের গুরুত্ব",
-          description:
-            "ইসলামে হাদিসের গুরুত্ব সম্পর্কে একটি আলোচনা। হাদিস কীভাবে ইসলামি জীবনযাপনে সাহায্য করে এবং কুরআনের ব্যাখ্যা প্রদান করে তা বিস্তারিতভাবে আলোচনা করা হয়েছে।",
-          youtubeId: "FjHGZj2IjBk",
-          views: "18K",
-          date: "2 সপ্তাহ আগে",
-        },
-        {
-          id: "4",
-          title: "ইসলামি আইনের পরিচয়",
-          description:
-            "ইসলামি আইনের মৌলিক ধারণা সম্পর্কে একটি সংক্ষিপ্ত আলোচনা। শরিয়াহ আইন, ফিকাহ, এবং ইসলামি ন্যায়বিচার ব্যবস্থা সম্পর্কে আলোকপাত করা হয়েছে।",
-          youtubeId: "9bZkp7q19f0",
-          views: "25K",
-          date: "3 সপ্তাহ আগে",
-        },
-      ]
-      setVideos(mockVideos)
-      setCurrentVideo(mockVideos[0])
-    }
-
-    fetchVideos()
-  }, [])
-
-  const filteredVideos = videos.filter((video) => video.title.toLowerCase().includes(searchTerm.toLowerCase()))
+  const filteredVideos = videos.filter(
+    (video) =>
+      (selectedCategory === "সকল" || video.category === selectedCategory) &&
+      (video.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        video.description.toLowerCase().includes(searchTerm.toLowerCase()))
+  )
 
   return (
     <div className="min-h-screen bg-background pt-24">
@@ -74,11 +80,43 @@ export default function VideosPage() {
         <h1 className="text-4xl font-bold mb-8 text-foreground font-hind-siliguri">
           ভিডিও সমূহ
         </h1>
+
+        {/* Search and Categories */}
+        <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
+          <div className="relative w-full md:w-1/3">
+            <input
+              type="text"
+              placeholder="ভিডিও খুঁজুন"
+              className="w-full pl-10 pr-4 py-2 rounded-full bg-card border border-border focus:outline-none focus:ring-2 focus:ring-primary text-foreground font-hind-siliguri"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" />
+          </div>
+
+          <div className="flex flex-wrap justify-center gap-2">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={`px-4 py-2 rounded-full font-hind-siliguri transition-colors ${
+                  selectedCategory === category
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-card text-foreground hover:bg-muted"
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Videos Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredVideos.map((video) => (
             <div key={video.id} className="bg-card rounded-lg shadow-md overflow-hidden">
               <div className="relative aspect-video">
-                <VideoPlayer youtubeId={video.youtubeId} />
+                <VideoPlayer url={video.url} />
               </div>
               <div className="p-4">
                 <h3 className="text-xl font-semibold mb-2 text-card-foreground font-hind-siliguri">
@@ -88,7 +126,7 @@ export default function VideosPage() {
                   {video.description}
                 </p>
                 <div className="flex items-center text-muted-foreground">
-                  <span className="text-sm font-hind-siliguri">{video.views}</span>
+                  <span className="text-sm font-hind-siliguri">{video.duration}</span>
                   <span className="mx-2">•</span>
                   <span className="text-sm font-hind-siliguri">{video.date}</span>
                 </div>
@@ -96,6 +134,15 @@ export default function VideosPage() {
             </div>
           ))}
         </div>
+
+        {/* No Results Message */}
+        {filteredVideos.length === 0 && (
+          <div className="text-center py-8">
+            <p className="text-muted-foreground font-hind-siliguri">
+              কোন ভিডিও পাওয়া যায়নি। অনুগ্রহ করে অন্য কিছু খুঁজুন।
+            </p>
+          </div>
+        )}
       </div>
     </div>
   )
