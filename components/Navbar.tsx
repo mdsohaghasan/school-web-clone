@@ -50,7 +50,15 @@ export default function Navbar() {
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="/admission"
+                  className="text-lg hover:text-primary transition duration-300 font-bold"
+                >
+                  এডমিশন
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/academic"
                   className="text-lg hover:text-primary transition duration-300 font-bold"
                 >
                   একাডেমিক
@@ -58,7 +66,15 @@ export default function Navbar() {
               </li>
               <li>
                 <Link
-                  href="/#"
+                  href="/about"
+                  className="text-lg hover:text-primary transition duration-300 font-bold"
+                >
+                  আমাদের সম্পর্কে
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/books"
                   className="text-lg hover:text-primary transition duration-300 font-bold"
                 >
                   বইসমূহ
@@ -66,7 +82,7 @@ export default function Navbar() {
               </li>
               <li>
                 <Link
-                  href="/#"
+                  href="/videos"
                   className="text-lg hover:text-primary transition duration-300 font-bold"
                 >
                   ভিডিও
@@ -74,7 +90,15 @@ export default function Navbar() {
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="/blog"
+                  className="text-lg hover:text-primary transition duration-300 font-bold"
+                >
+                  ব্লগপোষ্ট
+                </Link> 
+              </li>
+              <li>
+                <Link
+                  href="/contact"
                   className="text-lg hover:text-primary transition duration-300 font-bold"
                 >
                   যোগাযোগ
@@ -119,7 +143,15 @@ export default function Navbar() {
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="/admission"
+                  className="text-lg hover:text-primary transition duration-300 font-bold"
+                >
+                  এডমিশন
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/academic"
                   className="text-lg hover:text-primary transition duration-300 font-bold"
                 >
                   একাডেমিক
@@ -127,7 +159,15 @@ export default function Navbar() {
               </li>
               <li>
                 <Link
-                  href="/"
+                  href="/about"
+                  className="text-lg hover:text-primary transition duration-300 font-bold"
+                >
+                  আমাদের সম্পর্কে
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/books"
                   className="text-lg hover:text-primary transition duration-300 font-bold"
                 >
                   বইসমূহ
@@ -135,7 +175,7 @@ export default function Navbar() {
               </li>
               <li>
                 <Link
-                  href="/"
+                  href="/videos"
                   className="text-lg hover:text-primary transition duration-300 font-bold"
                 >
                   ভিডিও
@@ -143,7 +183,15 @@ export default function Navbar() {
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="/blog"
+                  className="text-lg hover:text-primary transition duration-300 font-bold"
+                >
+                  ব্লগপোষ্ট
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/contact"
                   className="text-lg hover:text-primary transition duration-300 font-bold"
                 >
                   যোগাযোগ

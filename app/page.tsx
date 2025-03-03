@@ -1,5 +1,6 @@
 "use client"
 
+import { Carousel } from "@/components/Carousel"
 import { EventCard } from "@/components/EventCard"
 import { FacultyCard } from "@/components/FacultyCard"
 import { FeaturedBooks } from "@/components/FeaturedBooks"
@@ -15,7 +16,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <div
+      {/* <div
         className="relative h-screen flex items-center justify-center bg-cover bg-center bg-fixed"
         style={{ backgroundImage: `url('${heroSection.backgroundImage}')` }}
       >
@@ -34,11 +35,13 @@ export default function Home() {
             {heroSection.ctaText}
           </Link>
         </div>
-      </div>
+      </div> */}
+
+     <Carousel></Carousel>
  
       <main>
         {/* About Section */}
-        <section id="about" className="py-20 bg-card">
+        <section id="about" className="py-20 ms-12 bg-card">
           <div className="container mx-auto px-4">
             <h2 className="text-4xl font-bold text-center mb-12 text-card-foreground ">
               {aboutSection.title}
@@ -84,6 +87,7 @@ export default function Home() {
 
         <FeaturedBooks />
         <VideoPreview />
+
 
         {/* Events Section */}
         <section className="py-20 bg-card">
