@@ -5,9 +5,12 @@ import Link from "next/link"
 import { useEffect, useState } from "react"
 import { Button } from "./ui/button"
 import { useScrollDirection } from "@/hooks/useScrollDirection"
+import { FaChevronDown } from "react-icons/fa"
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isAcademicDropdownOpen, setIsAcademicDropdownOpen] = useState(false);
+  const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false);
   const scrollDirection = useScrollDirection();
   const [showNavbar, setShowNavbar] = useState(true);
 
@@ -22,6 +25,33 @@ export default function Navbar() {
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
+
+  const toggleAcademicDropdown = () => {
+    setIsAcademicDropdownOpen(!isAcademicDropdownOpen);
+    if (!isAcademicDropdownOpen) {
+      setIsAboutDropdownOpen(false);
+    }
+  };
+
+  const toggleAboutDropdown = () => {
+    setIsAboutDropdownOpen(!isAboutDropdownOpen);
+    if (!isAboutDropdownOpen) {
+      setIsAcademicDropdownOpen(false);
+    }
+  };
+
+  const academicMenuItems = [
+    { href: "/academic/curriculum", label: "পাঠ্যক্রম" },
+    { href: "/academic/department", label: "বিভাগসমূহ" },
+    { href: "/academic/campus", label: "ক্যাম্পাস" },
+  ];
+
+  const aboutMenuItems = [
+    { href: "/about/introduction", label: "মাদরাসা পরিচিতি" },
+    { href: "/about/principal", label: "অধ্যক্ষ" },
+    { href: "/about/faculty", label: "শিক্ষক মণ্ডলী" },
+    { href: "/about/mosque", label: "মসজিদ কমপ্লেক্স" },
+  ];
 
   return (
     <nav
@@ -56,21 +86,49 @@ export default function Navbar() {
                   এডমিশন
                 </Link>
               </li>
-              <li>
-                <Link
-                  href="/academic"
-                  className="text-lg hover:text-primary transition duration-300 font-bold"
+              <li className="relative">
+                <button
+                  onClick={toggleAcademicDropdown}
+                  className="text-lg hover:text-primary transition duration-300 font-bold flex items-center"
                 >
                   একাডেমিক
-                </Link>
+                  <FaChevronDown className="ml-1 w-4 h-4" />
+                </button>
+                {isAcademicDropdownOpen && (
+                  <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2">
+                    {academicMenuItems.map((item) => (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        className="block px-4 py-2 text-sm hover:bg-primary/10 hover:text-primary font-hind-siliguri"
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
               </li>
-              <li>
-                <Link
-                  href="/about"
-                  className="text-lg hover:text-primary transition duration-300 font-bold"
+              <li className="relative">
+                <button
+                  onClick={toggleAboutDropdown}
+                  className="text-lg hover:text-primary transition duration-300 font-bold flex items-center"
                 >
                   আমাদের সম্পর্কে
-                </Link>
+                  <FaChevronDown className="ml-1 w-4 h-4" />
+                </button>
+                {isAboutDropdownOpen && (
+                  <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2">
+                    {aboutMenuItems.map((item) => (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        className="block px-4 py-2 text-sm hover:bg-primary/10 hover:text-primary font-hind-siliguri"
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
               </li>
               <li>
                 <Link
@@ -94,7 +152,7 @@ export default function Navbar() {
                   className="text-lg hover:text-primary transition duration-300 font-bold"
                 >
                   ব্লগপোষ্ট
-                </Link> 
+                </Link>
               </li>
               <li>
                 <Link
@@ -149,21 +207,49 @@ export default function Navbar() {
                   এডমিশন
                 </Link>
               </li>
-              <li>
-                <Link
-                  href="/academic"
-                  className="text-lg hover:text-primary transition duration-300 font-bold"
+              <li className="w-full">
+                <button
+                  onClick={toggleAcademicDropdown}
+                  className="text-lg hover:text-primary transition duration-300 font-bold flex items-center justify-center w-full"
                 >
                   একাডেমিক
-                </Link>
+                  <FaChevronDown className="ml-1 w-4 h-4" />
+                </button>
+                {isAcademicDropdownOpen && (
+                  <div className="mt-2 bg-gray-50 py-2 w-full">
+                    {academicMenuItems.map((item) => (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        className="block px-4 py-2 text-sm hover:bg-primary/10 hover:text-primary text-center font-hind-siliguri"
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
               </li>
-              <li>
-                <Link
-                  href="/about"
-                  className="text-lg hover:text-primary transition duration-300 font-bold"
+              <li className="w-full">
+                <button
+                  onClick={toggleAboutDropdown}
+                  className="text-lg hover:text-primary transition duration-300 font-bold flex items-center justify-center w-full"
                 >
                   আমাদের সম্পর্কে
-                </Link>
+                  <FaChevronDown className="ml-1 w-4 h-4" />
+                </button>
+                {isAboutDropdownOpen && (
+                  <div className="mt-2 bg-gray-50 py-2 w-full">
+                    {aboutMenuItems.map((item) => (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        className="block px-4 py-2 text-sm hover:bg-primary/10 hover:text-primary text-center font-hind-siliguri"
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
               </li>
               <li>
                 <Link
