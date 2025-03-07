@@ -7,7 +7,7 @@ const slides = [
   {
     image: "/images/slider/slider-1.jpg",
     title: "উৎকর্ষের ৫০ বছর",
-    description: "আল-হিকমা একাডেমিক ইনস্টিটিউট: ১৯৭৩ থেকে জ্ঞান ও মূল্যবোধের প্রসারে নিয়োজিত",
+    description: "হাবরুল উম্মাহ মডেল মাদরাসা : ১৯৭৩ থেকে জ্ঞান ও মূল্যবোধের প্রসারে নিয়োজিত",
   },
   {
     image: "/images/slider/slider-2.jpg",

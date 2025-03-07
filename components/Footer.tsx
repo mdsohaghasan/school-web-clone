@@ -9,15 +9,15 @@ interface FooterLink {
 
 const policies = [
   { href: "/policies/admission", label: "ভর্তি নীতিমালা" },
-  { href: "/policies/attendance", label: "উপস্থিতি নীতিমালা" },
-  { href: "/policies/examination", label: "পরীক্ষা নীতিমালা" },
-  { href: "/policies/discipline", label: "শৃঙ্খলা নীতিমালা" },
-  { href: "/policies/hostel", label: "হোস্টেল নীতিমালা" },
+  { href: "/policies/attendance", label: "প্রাতিষ্ঠানিক নীতিমালা" },
+  { href: "/policies/examination", label: "পরীক্ষা সিষ্টেম" }, 
+  { href: "/policies/academic-calendar", label: "একাডেমিক ক্যালেন্ডার" },
+  { href: "/policies/hostel", label: "ক্যাম্পাস নীতিমালা" },
 ];
 
 const legal = [
-  { href: "/legal/privacy", label: "গোপনীয়তা নীতি" },
   { href: "/legal/terms", label: "ব্যবহারের শর্তাবলী" },
+  { href: "/legal/privacy", label: "গোপনীয়তা নীতি" },
   { href: "/legal/refund", label: "রিফান্ড নীতি" },
   { href: "/legal/copyright", label: "কপিরাইট নীতি" },
   { href: "/legal/sitemap", label: "সাইটম্যাপ" },
@@ -29,49 +29,52 @@ export default function Footer() {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* About Madrasa */}
-          <div>
+          <div className="lg:col-span-1">
             <h3 className="text-xl font-bold mb-4 font-hind-siliguri">হাবরুল উম্মাহ মডেল মাদরাসা</h3>
             <p className="font-hind-siliguri text-white/90">
               হাবরুল উম্মাহ মডেল মাদরাসা একটি আদর্শ শিক্ষা প্রতিষ্ঠান। এখানে ধর্মীয় শিক্ষার পাশাপাশি আধুনিক শিক্ষাও প্রদান করা হয়। আমাদের লক্ষ্য হল শিক্ষার্থীদের মাঝে নৈতিকতা, আদর্শ ও জ্ঞানের আলো ছড়িয়ে দেওয়া।
             </p>
           </div>
 
-          {/* Policies */}
-          <div>
-            <h3 className="text-xl font-bold mb-4 font-hind-siliguri">নীতিমালা</h3>
-            <ul className="space-y-2">
-              {policies.map((link, index) => (
-                <li key={index}>
-                  <Link
-                    href={link.href}
-                    className="hover:text-white/80 transition duration-300 font-hind-siliguri"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Policies & Legal Information Container */}
+          <div className="grid grid-cols-2 lg:col-span-2 gap-4 lg:gap-8">
+            {/* Policies */}
+            <div>
+              <h3 className="text-xl font-bold mb-4 font-hind-siliguri">নীতিমালা</h3>
+              <ul className="space-y-2">
+                {policies.map((link, index) => (
+                  <li key={index}>
+                    <Link
+                      href={link.href}
+                      className="hover:text-white/80 transition duration-300 font-hind-siliguri"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          {/* Legal */}
-          <div>
-            <h3 className="text-xl font-bold mb-4 font-hind-siliguri">আইনি তথ্য</h3>
-            <ul className="space-y-2">
-              {legal.map((link, index) => (
-                <li key={index}>
-                  <Link
-                    href={link.href}
-                    className="hover:text-white/80 transition duration-300 font-hind-siliguri"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            {/* Legal Information */}
+            <div>
+              <h3 className="text-xl font-bold mb-4 font-hind-siliguri">ইউস্ফুল লিঙ্ক</h3>
+              <ul className="space-y-2">
+                {legal.map((link, index) => (
+                  <li key={index}>
+                    <Link
+                      href={link.href}
+                      className="hover:text-white/80 transition duration-300 font-hind-siliguri"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
           {/* Contact & Social Media */}
-          <div>
+          <div className="lg:col-span-1">
             <h3 className="text-xl font-bold mb-4 font-hind-siliguri">যোগাযোগ</h3>
             <div className="space-y-3 mb-6">
               <div className="flex items-start space-x-3">
@@ -89,7 +92,6 @@ export default function Footer() {
                 <FaEnvelope />
                 <p className="font-hind-siliguri">info@habrulummah.com</p>
               </div>
-              
             </div>
             
             <div className="flex space-x-4">
@@ -112,7 +114,7 @@ export default function Footer() {
         {/* Copyright */}
         <div className="text-center border-t border-white/20 pt-8">
           <p className="font-hind-siliguri">
-            © {new Date().getFullYear()} হাবরুল উম্মাহ মডেল মাদরাসা। সর্বস্বত্ব সংরক্ষিত।
+            © {new Date().getFullYear()} হাবরুল উম্মাহ মডেল মাদরাসা। সর্বস্বত্ব সংরক্ষিত
           </p>
         </div>
       </div>
