@@ -8,55 +8,83 @@ import { FaSearch } from "react-icons/fa"
 const books = [
   {
     id: 1,
+    title: "কুরআন ও সহীহ হাদীসের আলোকে ইস্তিগফার",
+    author: "মোস্তাফিজুর রহমান আল-মাদানী",
+    cover: "/images/book/কুরআন-ও-সহীহ-হাদীসের-আলোকে-ইস্তিগফার.png",
+    category: "হাদিস",
+  },
+  {
+    id: 2,
+    title: "প্রত্যেক মুসলিমের জন্যে যা জানা অপরিহার্য",
+    author: "মোস্তাফিজুর রহমান আল-মাদানী",
+    cover: "/images/book/প্রত্যেক-মুসলিমের-জন্যে-যা-জানা-অপরিহার্য.png",
+    category: "ইসলামি জ্ঞান",
+  },
+  {
+    id: 3,
+    title: "নাবী (সাঃ) যেভাবে পবিত্রতা অর্জন করতেন",
+    author: "মোস্তাফিজুর রহমান আল-মাদানী",
+    cover: "/images/book/নাবী-(সাঃ)-যেভাবে-পবিত্রতা-অর্জন-করতেন.png",
+    category: "হাদিস",
+  },
+  {
+    id: 4,
+    title: "রাসূল সাঃ এর ২৪ ঘন্টার আমল",
+    author: "মোস্তাফিজুর রহমান আল-মাদানী",
+    cover: "/images/book/রাসূল-সাঃ-এর-২৪-ঘন্টার-আমল.png",
+    category: "হাদিস",
+  },
+  {
+    id: 5,
+    title: "কুরআন ও সহীহ হাদীসের আলোকে নিষিদ্ধ কর্মকান্ড",
+    author: "মোস্তাফিজুর রহমান আল-মাদানী",
+    cover: "/images/book/নিষিদ্ধ-কর্মকাণ্ড.png",
+    category: "ইসলামি জ্ঞান",
+  },
+  {
+    id: 6,
     title: "ইসলামের ইতিহাস",
     author: "ড. মুহাম্মদ আলী",
     cover: "https://source.unsplash.com/random/300x400?islamic+book",
     category: "ইতিহাস",
   },
   {
-    id: 2,
+    id: 7,
     title: "কুরআন তাফসীর",
     author: "মাওলানা আব্দুল করিম",
     cover: "https://source.unsplash.com/random/300x400?quran",
     category: "তাফসীর",
   },
   {
-    id: 3,
-    title: "হাদিস শরীফ",
-    author: "ইমাম বুখারী",
-    cover: "https://source.unsplash.com/random/300x400?hadith",
-    category: "হাদিস",
-  },
-  {
-    id: 4,
+    id: 8,
     title: "ইসলামি আইন",
     author: "ড. জাকির নায়েক",
     cover: "https://source.unsplash.com/random/300x400?islamic+law",
     category: "আইন",
   },
   {
-    id: 5,
+    id: 9,
     title: "ইসলামি দর্শন",
     author: "ড. আলী শরিয়াতি",
     cover: "https://source.unsplash.com/random/300x400?islamic+philosophy",
     category: "দর্শন",
   },
   {
-    id: 6,
+    id: 10,
     title: "ইসলামি অর্থনীতি",
     author: "মুহাম্মদ তাকি উসমানী",
     cover: "https://source.unsplash.com/random/300x400?islamic+economics",
     category: "অর্থনীতি",
   },
   {
-    id: 7,
+    id: 11,
     title: "সীরাতুন নবী",
     author: "সফিউর রহমান মুবারকপুরী",
     cover: "https://source.unsplash.com/random/300x400?prophet+muhammad",
     category: "জীবনী",
   },
   {
-    id: 8,
+    id: 12,
     title: "ইসলামি বিজ্ঞান",
     author: "ড. মুহাম্মদ ইকবাল",
     cover: "https://source.unsplash.com/random/300x400?islamic+science",
@@ -64,7 +92,7 @@ const books = [
   },
 ]
 
-const categories = ["সকল", "ইতিহাস", "তাফসীর", "হাদিস", "আইন", "দর্শন", "অর্থনীতি", "জীবনী", "বিজ্ঞান"]
+const categories = ["সকল", "হাদিস", "ইসলামি জ্ঞান"]
 
 export default function BooksPage() {
   const [searchTerm, setSearchTerm] = useState("")
@@ -118,12 +146,14 @@ export default function BooksPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {filteredBooks.map((book) => (
             <div key={book.id} className="bg-card rounded-lg shadow-md overflow-hidden">
-              <div className="relative h-64">
-                <Image
+              <div className="relative h-64 overflow-hidden">
+              <Image
                   src={book.cover}
                   alt={book.title}
-                  layout="fill"
-                  objectFit="cover"
+                  className="object-contain mx-auto"
+                  width={230}
+                  height={256}
+                
                 />
               </div>
               <div className="p-4">

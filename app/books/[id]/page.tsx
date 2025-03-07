@@ -28,15 +28,15 @@ export default function BookDetails() {
       // In a real application, this would be an API call
       const mockBook: Book = {
         id: Number(id),
-        title: "ইসলামের ইতিহাস",
-        author: "ড. মুহাম্মদ আলী",
-        cover: `https://source.unsplash.com/random/800x1200?islamic+book&${id}`,
-        category: "ইতিহাস",
+        title: "কুরআন ও সহীহ হাদীসের আলোকে ইস্তিগফার",
+        author: "মোস্তাফিজুর রহমান আল-মাদানী",
+        cover: `/images/book/কুরআন-ও-সহীহ-হাদীসের-আলোকে-ইস্তিগফার.png`,
+        category: "হাদিস",
         description:
-          "এই বইটি ইসলামের সমৃদ্ধ ইতিহাস নিয়ে একটি বিস্তৃত আলোচনা করেছে। প্রাচীন আরব থেকে শুরু করে আধুনিক যুগ পর্যন্ত ইসলামের বিকাশ, বিস্তার এবং প্রভাব নিয়ে গভীর বিশ্লেষণ করা হয়েছে। লেখক ড. মুহাম্মদ আলী তার গবেষণালব্ধ জ্ঞান ও অভিজ্ঞতার আলোকে ইসলামের ঐতিহাসিক ঘটনাবলী, বিভিন্ন রাজবংশের শাসনকাল, ইসলামি সভ্যতার অবদান এবং বিশ্ব ইতিহাসে ইসলামের ভূমিকা তুলে ধরেছেন।",
-        publicationDate: "১৫ মে, ২০২২",
+          "এই বইটি কুরআন ও সহীহ হাদীসের আলোকে ইস্তিগফার সম্পর্কে বিস্তারিত আলোচনা করেছে। ইস্তিগফারের গুরুত্ব, ফযিলত এবং পদ্ধতি সম্পর্কে বিস্তারিত বর্ণনা করা হয়েছে।",
+        publicationDate: "১৫ মে, ২০২৩",
         language: "বাংলা",
-        pages: 450,
+        pages: 250,
       }
       setBook(mockBook)
     }
@@ -61,9 +61,9 @@ export default function BookDetails() {
               <Image
                 src={book.cover || "/placeholder.svg"}
                 alt={book.title}
-                width={400}
-                height={600}
-                className="h-full w-full object-cover md:w-48"
+                className="object-contain mx-auto"
+                width={230}
+                height={256}
               />
             </div>
             <div className="p-8">

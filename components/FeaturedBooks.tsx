@@ -6,29 +6,29 @@ const featuredBooks = [
     id: 1,
     title: "কুরআন ও সহীহ হাদীসের আলোকে ইস্তিগফার",
     author: "মোস্তাফিজুর রহমান আল-মাদানী",
-    cover: "/images/dummy/book/কুরআন-ও-সহীহ-হাদীসের-আলোকে-ইস্তিগফার.png",
+    cover: "/images/book/কুরআন-ও-সহীহ-হাদীসের-আলোকে-ইস্তিগফার.png",
   },
   { id: 2, 
     title: "প্রত্যেক মুসলিমের জন্যে যা জানা অপরিহার্য", 
     author: "মোস্তাফিজুর রহমান আল-মাদানী", 
-    cover: "/images/dummy/book/প্রত্যেক-মুসলিমের-জন্যে-যা-জানা-অপরিহার্য.png", 
+    cover: "/images/book/প্রত্যেক-মুসলিমের-জন্যে-যা-জানা-অপরিহার্য.png", 
    },
   { id: 3, 
     title: "নাবী (সাঃ) যেভাবে পবিত্রতা অর্জন করতেন", 
     author: "মোস্তাফিজুর রহমান আল-মাদানী", 
-    cover: "/images/dummy/book/নাবী-(সাঃ)-যেভাবে-পবিত্রতা-অর্জন-করতেন.png", 
+    cover: "/images/book/নাবী-(সাঃ)-যেভাবে-পবিত্রতা-অর্জন-করতেন.png", 
   },
   {
     id: 4,
     title: "রাসূল সাঃ এর ২৪ ঘন্টার আমল",
     author: "মোস্তাফিজুর রহমান আল-মাদানী",
-    cover: "/images/dummy/book/রাসূল-সাঃ-এর-২৪-ঘন্টার-আমল.png", 
+    cover: "/images/book/রাসূল-সাঃ-এর-২৪-ঘন্টার-আমল.png", 
   },
   {
     id: 5,
     title: "কুরআন ও সহীহ হাদীসের আলোকে নিষিদ্ধ কর্মকান্ড",
     author: "মোস্তাফিজুর রহমান আল-মাদানী",
-    cover: "/images/dummy/book/নিষিদ্ধ-কর্মকাণ্ড.png", 
+    cover: "/images/book/নিষিদ্ধ-কর্মকাণ্ড.png", 
   },
  
 ]
@@ -47,7 +47,6 @@ export function FeaturedBooks() {
                 <Image
                   src={book.cover}
                   alt={book.title}
-                  // layout="fill"
                   className="object-contain mx-auto"
                   width={230}
                   height={256}
