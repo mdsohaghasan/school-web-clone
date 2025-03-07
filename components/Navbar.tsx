@@ -11,6 +11,7 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isAcademicDropdownOpen, setIsAcademicDropdownOpen] = useState(false);
   const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false);
+  const [isAdmissionDropdownOpen, setIsAdmissionDropdownOpen] = useState(false);
   const scrollDirection = useScrollDirection();
   const [showNavbar, setShowNavbar] = useState(true);
 
@@ -30,6 +31,7 @@ export default function Navbar() {
     setIsAcademicDropdownOpen(!isAcademicDropdownOpen);
     if (!isAcademicDropdownOpen) {
       setIsAboutDropdownOpen(false);
+      setIsAdmissionDropdownOpen(false);
     }
   };
 
@@ -37,6 +39,15 @@ export default function Navbar() {
     setIsAboutDropdownOpen(!isAboutDropdownOpen);
     if (!isAboutDropdownOpen) {
       setIsAcademicDropdownOpen(false);
+      setIsAdmissionDropdownOpen(false);
+    }
+  };
+
+  const toggleAdmissionDropdown = () => {
+    setIsAdmissionDropdownOpen(!isAdmissionDropdownOpen);
+    if (!isAdmissionDropdownOpen) {
+      setIsAcademicDropdownOpen(false);
+      setIsAboutDropdownOpen(false);
     }
   };
 
@@ -51,6 +62,12 @@ export default function Navbar() {
     { href: "/about/principal", label: "অধ্যক্ষ" },
     { href: "/about/faculty", label: "শিক্ষক মণ্ডলী" },
     { href: "/about/mosque", label: "মসজিদ কমপ্লেক্স" },
+  ];
+
+  const admissionMenuItems = [
+    { href: "/admission/process", label: "ভর্তি প্রক্রিয়া" },
+    { href: "/admission/apply", label: "অনলাইন আবেদন" },
+    { href: "/admission/scholarship", label: "স্কলারশিপ" },
   ];
 
   return (
@@ -78,13 +95,27 @@ export default function Navbar() {
                   হোম
                 </Link>
               </li>
-              <li>
-                <Link
-                  href="/admission"
-                  className="text-lg hover:text-primary transition duration-300 font-bold"
+              <li className="relative">
+                <button
+                  onClick={toggleAdmissionDropdown}
+                  className="text-lg hover:text-primary transition duration-300 font-bold flex items-center"
                 >
                   এডমিশন
-                </Link>
+                  <FaChevronDown className="ml-1 w-4 h-4" />
+                </button>
+                {isAdmissionDropdownOpen && (
+                  <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2">
+                    {admissionMenuItems.map((item) => (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        className="block px-4 py-2 text-sm hover:bg-primary/10 hover:text-primary font-hind-siliguri"
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
               </li>
               <li className="relative">
                 <button
@@ -199,13 +230,27 @@ export default function Navbar() {
                   হোম
                 </Link>
               </li>
-              <li>
-                <Link
-                  href="/admission"
-                  className="text-lg hover:text-primary transition duration-300 font-bold"
+              <li className="w-full">
+                <button
+                  onClick={toggleAdmissionDropdown}
+                  className="text-lg hover:text-primary transition duration-300 font-bold flex items-center justify-center w-full"
                 >
                   এডমিশন
-                </Link>
+                  <FaChevronDown className="ml-1 w-4 h-4" />
+                </button>
+                {isAdmissionDropdownOpen && (
+                  <div className="mt-2 bg-gray-50 py-2 w-full">
+                    {admissionMenuItems.map((item) => (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        className="block px-4 py-2 text-sm hover:bg-primary/10 hover:text-primary text-center font-hind-siliguri"
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
               </li>
               <li className="w-full">
                 <button
