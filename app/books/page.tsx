@@ -92,17 +92,26 @@ const books = [
   },
 ]
 
-const categories = ["সকল", "হাদিস", "ইসলামি জ্ঞান"]
+// Get unique authors from books
+const authors = ["সকল লেখক", ...new Set(books.map(book => book.author))]
+const categories = ["সকল বিষয়", "হাদিস", "ইসলামি জ্ঞান"]
 
 export default function BooksPage() {
   const [searchTerm, setSearchTerm] = useState("")
-  const [selectedCategory, setSelectedCategory] = useState("সকল")
+  const [selectedCategory, setSelectedCategory] = useState("সকল বিষয়")
+  const [selectedAuthor, setSelectedAuthor] = useState("সকল লেখক")
 
   const filteredBooks = books.filter(
-    (book) =>
-      (selectedCategory === "সকল" || book.category === selectedCategory) &&
-      (book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        book.author.toLowerCase().includes(searchTerm.toLowerCase()))
+    (book) => {
+      const matchesSearch = searchTerm === "" || 
+        book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        book.author.toLowerCase().includes(searchTerm.toLowerCase())
+      
+      const matchesCategory = selectedCategory === "সকল বিষয়" || book.category === selectedCategory
+      const matchesAuthor = selectedAuthor === "সকল লেখক" || book.author === selectedAuthor
+
+      return matchesSearch && matchesCategory && matchesAuthor
+    }
   )
 
   return (
@@ -112,33 +121,95 @@ export default function BooksPage() {
           বই সমূহ
         </h1>
 
-        {/* Search and Categories */}
-        <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
-          <div className="relative w-full md:w-1/3">
-            <input
-              type="text"
-              placeholder="বই বা লেখক খুঁজুন"
-              className="w-full pl-10 pr-4 py-2 rounded-full bg-card border border-border focus:outline-none focus:ring-2 focus:ring-primary text-foreground font-hind-siliguri"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-            <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" />
+        {/* Search and Filters */}
+        <div className="flex flex-col gap-6 mb-8">
+          {/* Search and Filter Options in One Line */}
+          <div className="flex flex-col md:flex-row justify-between items-end gap-4">
+            {/* Search Bar */}
+            <div className="w-full md:w-2/5">
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="বই খুঁজুন"
+                  className="w-full pl-10 pr-4 py-2 rounded-lg bg-card border border-border focus:outline-none focus:ring-2 focus:ring-primary text-foreground font-hind-siliguri"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                />
+                <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" />
+              </div>
+            </div>
+
+            {/* Categories Filter */}
+            <div className="w-full md:w-1/4">
+              <label htmlFor="category-select" className="block text-foreground font-hind-siliguri font-semibold mb-2">
+                বিষয় নির্বাচন করুন:
+              </label>
+              <select
+                id="category-select"
+                value={selectedCategory}
+                onChange={(e) => setSelectedCategory(e.target.value)}
+                className="w-full px-4 py-2 rounded-lg bg-card border border-border focus:outline-none focus:ring-2 focus:ring-primary text-foreground font-hind-siliguri"
+              >
+                {categories.map((category) => (
+                  <option key={category} value={category}>
+                    {category}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Authors Filter */}
+            <div className="w-full md:w-1/4">
+              <label htmlFor="author-select" className="block text-foreground font-hind-siliguri font-semibold mb-2">
+                লেখক নির্বাচন করুন:
+              </label>
+              <select
+                id="author-select"
+                value={selectedAuthor}
+                onChange={(e) => setSelectedAuthor(e.target.value)}
+                className="w-full px-4 py-2 rounded-lg bg-card border border-border focus:outline-none focus:ring-2 focus:ring-primary text-foreground font-hind-siliguri"
+              >
+                {authors.map((author) => (
+                  <option key={author} value={author}>
+                    {author}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
 
+          {/* Active Filters Display */}
           <div className="flex flex-wrap justify-center gap-2">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={`px-4 py-2 rounded-full font-hind-siliguri transition-colors ${
-                  selectedCategory === category
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-card text-foreground hover:bg-muted"
-                }`}
-              >
-                {category}
-              </button>
-            ))}
+            {(selectedCategory !== "সকল বিষয়" || selectedAuthor !== "সকল লেখক" || searchTerm) && (
+              <div className="flex flex-wrap gap-2 items-center">
+                <span className="text-foreground font-hind-siliguri">সক্রিয় ফিল্টার:</span>
+                {selectedCategory !== "সকল বিষয়" && (
+                  <span className="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-hind-siliguri">
+                    বিষয়: {selectedCategory}
+                  </span>
+                )}
+                {selectedAuthor !== "সকল লেখক" && (
+                  <span className="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-hind-siliguri">
+                    লেখক: {selectedAuthor}
+                  </span>
+                )}
+                {searchTerm && (
+                  <span className="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-hind-siliguri">
+                    খোঁজা হচ্ছে: {searchTerm}
+                  </span>
+                )}
+                <button
+                  onClick={() => {
+                    setSelectedCategory("সকল বিষয়")
+                    setSelectedAuthor("সকল লেখক")
+                    setSearchTerm("")
+                  }}
+                  className="text-red-500 hover:text-red-600 font-hind-siliguri text-sm flex items-center gap-1"
+                >
+                  <span>ফিল্টার মুছুন</span>
+                </button>
+              </div>
+            )}
           </div>
         </div>
 
