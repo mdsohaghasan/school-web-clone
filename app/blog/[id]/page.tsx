@@ -1,11 +1,11 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import BlogCard from '../components/BlogCard';
-import Pagination from '../components/Pagination';
-import { BlogPost } from '../types/blog';
-
-const POSTS_PER_PAGE = 9;
+import Image from 'next/image';
+import Link from 'next/link';
+import { useParams } from 'next/navigation';
+import { BlogPost } from '../../types/blog';
+import { FaArrowLeft, FaCalendar, FaUser, FaTag } from 'react-icons/fa';
 
 // Islamic blog posts data with local images
 const islamicPosts: BlogPost[] = [
@@ -41,7 +41,7 @@ const islamicPosts: BlogPost[] = [
   }
 ];
 
-// Generate more posts to reach 27
+// Generate more posts function (same as in blog/page.tsx)
 const generateMorePosts = () => {
   const allPosts = [...islamicPosts];
   const topics = [
@@ -72,27 +72,24 @@ const generateMorePosts = () => {
   return allPosts;
 };
 
-export default function BlogPage() {
-  const [posts, setPosts] = useState<BlogPost[]>([]);
-  const [currentPage, setCurrentPage] = useState(1);
+export default function BlogPostPage() {
+  const { id } = useParams();
+  const [post, setPost] = useState<BlogPost | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     // Simulate API loading
     const timer = setTimeout(() => {
-      setPosts(generateMorePosts());
+      const allPosts = generateMorePosts();
+      const foundPost = allPosts.find(p => p.id === id);
+      setPost(foundPost || null);
       setLoading(false);
     }, 1000);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [id]);
 
-  const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
-  const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
-  const endIndex = startIndex + POSTS_PER_PAGE;
-  const currentPosts = posts.slice(startIndex, endIndex);
-
-  if (loading) {
+  if (loading || !post) {
     return (
       <div className="container mx-auto px-4 py-8 mt-20">
         <div className="text-center">লোড হচ্ছে...</div>
@@ -102,18 +99,50 @@ export default function BlogPage() {
 
   return (
     <div className="container mx-auto px-4 py-8 mt-20">
-      <h1 className="text-4xl font-bold text-primary mb-8">ব্লগ পোস্ট</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {currentPosts.map((post) => (
-          <BlogCard key={post.id} post={post} />
-        ))}
+      <Link
+        href="/blog"
+        className="inline-flex items-center text-primary hover:text-primary/90 mb-8"
+      >
+        <FaArrowLeft className="mr-2" />
+        সকল পোস্ট
+      </Link>
+
+      <div className="bg-card rounded-lg shadow-lg overflow-hidden">
+        <div className="relative h-96 w-full">
+          <Image
+            src={post.imageUrl}
+            alt={post.title}
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
+
+        <div className="p-8">
+          <h1 className="text-4xl font-bold text-card-foreground mb-4">{post.title}</h1>
+          
+          <div className="flex flex-wrap gap-4 mb-6 text-muted-foreground">
+            <div className="flex items-center">
+              <FaCalendar className="mr-2" />
+              {post.date}
+            </div>
+            <div className="flex items-center">
+              <FaUser className="mr-2" />
+              {post.author}
+            </div>
+            <div className="flex items-center">
+              <FaTag className="mr-2" />
+              {post.category}
+            </div>
+          </div>
+
+          <div className="prose max-w-none text-card-foreground">
+            <p className="text-lg leading-relaxed whitespace-pre-line">
+              {post.content}
+            </p>
+          </div>
+        </div>
       </div>
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        postsPerPage={POSTS_PER_PAGE}
-        onPageChange={setCurrentPage}
-      />
     </div>
   );
 } 
