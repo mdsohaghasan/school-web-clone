@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaFileAlt, FaInfoCircle, FaUpload, FaCheckCircle } from 'react-icons/fa';
+import { FaInfoCircle, FaUpload } from 'react-icons/fa';
 
 export default function ApplyPage() {
   return (

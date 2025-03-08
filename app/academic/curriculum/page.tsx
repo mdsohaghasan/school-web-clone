@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from 'next/link';
 import { FaBook, FaClock, FaUserGraduate } from 'react-icons/fa';
 
 const curriculumData = {

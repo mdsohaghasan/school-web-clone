@@ -81,7 +81,7 @@ export default function Footer() {
                 <FaMapMarkerAlt className="mt-1" />
                 <p className="font-hind-siliguri">
                   হাবরুল উম্মাহ মডেল মাদরাসা<br />
-                  রাজিবপুর, (হাবিব উল্লাহ'র দোকানের কাছে), লক্ষ্মীপুর সদর, লক্ষ্মীপুর 3720
+                  রাজিবপুর, (হাবিব উল্লাহ&apos;র দোকানের কাছে), লক্ষ্মীপুর সদর, লক্ষ্মীপুর 3720
                 </p>
               </div>
               <div className="flex items-center space-x-3">
