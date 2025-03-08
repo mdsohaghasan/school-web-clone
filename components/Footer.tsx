@@ -1,11 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock, FaFacebook, FaTwitter, FaInstagram, FaYoutube } from 'react-icons/fa';
-
-interface FooterLink {
-  href: string;
-  label: string;
-}
+import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaFacebook, FaTwitter, FaInstagram, FaYoutube } from 'react-icons/fa';
 
 const policies = [
   { href: "/policies/admission", label: "ভর্তি নীতিমালা" },
