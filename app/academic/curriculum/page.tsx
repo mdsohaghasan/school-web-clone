@@ -1,7 +1,4 @@
 import React from 'react';
-import { FaBook, FaClock, FaUserGraduate } from 'react-icons/fa';
-
-
 
 export default function CurriculumPage() {
   return (
