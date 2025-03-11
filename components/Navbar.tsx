@@ -10,8 +10,6 @@ import { FaChevronDown } from "react-icons/fa"
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isAcademicDropdownOpen, setIsAcademicDropdownOpen] = useState(false);
-  const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false);
-  const [isAdmissionDropdownOpen, setIsAdmissionDropdownOpen] = useState(false);
   const [isMediaDropdownOpen, setIsMediaDropdownOpen] = useState(false);
   const scrollDirection = useScrollDirection();
   const [showNavbar, setShowNavbar] = useState(true);
@@ -30,8 +28,6 @@ export default function Navbar() {
       if (navbarRef.current && !navbarRef.current.contains(event.target as Node)) {
         setIsMobileMenuOpen(false);
         setIsAcademicDropdownOpen(false);
-        setIsAboutDropdownOpen(false);
-        setIsAdmissionDropdownOpen(false);
         setIsMediaDropdownOpen(false);
       }
     }
@@ -49,26 +45,6 @@ export default function Navbar() {
   const toggleAcademicDropdown = () => {
     setIsAcademicDropdownOpen(!isAcademicDropdownOpen);
     if (!isAcademicDropdownOpen) {
-      setIsAboutDropdownOpen(false);
-      setIsAdmissionDropdownOpen(false);
-      setIsMediaDropdownOpen(false);
-    }
-  };
-
-  const toggleAboutDropdown = () => {
-    setIsAboutDropdownOpen(!isAboutDropdownOpen);
-    if (!isAboutDropdownOpen) {
-      setIsAcademicDropdownOpen(false);
-      setIsAdmissionDropdownOpen(false);
-      setIsMediaDropdownOpen(false);
-    }
-  };
-
-  const toggleAdmissionDropdown = () => {
-    setIsAdmissionDropdownOpen(!isAdmissionDropdownOpen);
-    if (!isAdmissionDropdownOpen) {
-      setIsAcademicDropdownOpen(false);
-      setIsAboutDropdownOpen(false);
       setIsMediaDropdownOpen(false);
     }
   };
@@ -77,16 +53,12 @@ export default function Navbar() {
     setIsMediaDropdownOpen(!isMediaDropdownOpen);
     if (!isMediaDropdownOpen) {
       setIsAcademicDropdownOpen(false);
-      setIsAboutDropdownOpen(false);
-      setIsAdmissionDropdownOpen(false);
     }
   };
 
   const handleMenuItemClick = () => {
     setIsMobileMenuOpen(false);
     setIsAcademicDropdownOpen(false);
-    setIsAboutDropdownOpen(false);
-    setIsAdmissionDropdownOpen(false);
     setIsMediaDropdownOpen(false);
   };
 
@@ -96,7 +68,6 @@ export default function Navbar() {
     { href: "/academic/department", label: "বিভাগসমূহ" },
     { href: "/academic/curriculum", label: "কারিকুলাম" },
   ];
-
 
   const mediaMenuItems = [
     { href: "/videos", label: "ভিডিও" },

@@ -1,5 +1,4 @@
 import React from 'react';
-import { FaGraduationCap, FaHandHoldingHeart, FaCheckCircle, FaInfoCircle, FaFileAlt } from 'react-icons/fa';
 
 export default function ScholarshipPage() {
   return (
