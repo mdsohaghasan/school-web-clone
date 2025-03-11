@@ -12,6 +12,7 @@ export default function Navbar() {
   const [isAcademicDropdownOpen, setIsAcademicDropdownOpen] = useState(false);
   const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false);
   const [isAdmissionDropdownOpen, setIsAdmissionDropdownOpen] = useState(false);
+  const [isMediaDropdownOpen, setIsMediaDropdownOpen] = useState(false);
   const scrollDirection = useScrollDirection();
   const [showNavbar, setShowNavbar] = useState(true);
   const navbarRef = useRef<HTMLDivElement>(null);
@@ -31,6 +32,7 @@ export default function Navbar() {
         setIsAcademicDropdownOpen(false);
         setIsAboutDropdownOpen(false);
         setIsAdmissionDropdownOpen(false);
+        setIsMediaDropdownOpen(false);
       }
     }
 
@@ -49,6 +51,7 @@ export default function Navbar() {
     if (!isAcademicDropdownOpen) {
       setIsAboutDropdownOpen(false);
       setIsAdmissionDropdownOpen(false);
+      setIsMediaDropdownOpen(false);
     }
   };
 
@@ -57,6 +60,7 @@ export default function Navbar() {
     if (!isAboutDropdownOpen) {
       setIsAcademicDropdownOpen(false);
       setIsAdmissionDropdownOpen(false);
+      setIsMediaDropdownOpen(false);
     }
   };
 
@@ -65,6 +69,16 @@ export default function Navbar() {
     if (!isAdmissionDropdownOpen) {
       setIsAcademicDropdownOpen(false);
       setIsAboutDropdownOpen(false);
+      setIsMediaDropdownOpen(false);
+    }
+  };
+
+  const toggleMediaDropdown = () => {
+    setIsMediaDropdownOpen(!isMediaDropdownOpen);
+    if (!isMediaDropdownOpen) {
+      setIsAcademicDropdownOpen(false);
+      setIsAboutDropdownOpen(false);
+      setIsAdmissionDropdownOpen(false);
     }
   };
 
@@ -73,25 +87,20 @@ export default function Navbar() {
     setIsAcademicDropdownOpen(false);
     setIsAboutDropdownOpen(false);
     setIsAdmissionDropdownOpen(false);
+    setIsMediaDropdownOpen(false);
   };
 
   const academicMenuItems = [
-    { href: "/academic/curriculum", label: "পাঠ্যক্রম" },
+    { href: "/academic/admission", label: "ভর্তি প্রক্রিয়া" },
+    { href: "/academic/fees", label: "ফী স্ট্রাকচার" },
     { href: "/academic/department", label: "বিভাগসমূহ" },
-    { href: "/academic/campus", label: "ক্যাম্পাস" },
+    { href: "/academic/curriculum", label: "কারিকুলাম" },
   ];
 
-  const aboutMenuItems = [
-    { href: "/about/introduction", label: "মাদরাসা পরিচিতি" },
-    { href: "/about/principal", label: "অধ্যক্ষ" },
-    { href: "/about/faculty", label: "শিক্ষক মণ্ডলী" },
-    { href: "/about/mosque", label: "মসজিদ কমপ্লেক্স" },
-  ];
 
-  const admissionMenuItems = [
-    { href: "/admission/process", label: "ভর্তি প্রক্রিয়া" },
-    { href: "/admission/apply", label: "অনলাইন আবেদন" },
-    { href: "/admission/scholarship", label: "স্কলারশিপ" },
+  const mediaMenuItems = [
+    { href: "/videos", label: "ভিডিও" },
+    { href: "/blog", label: "ব্লগপোষ্ট" },
   ];
 
   return (
@@ -120,30 +129,7 @@ export default function Navbar() {
                   হোম
                 </Link>
               </li>
-              <li className="relative">
-                <button
-                  onClick={toggleAdmissionDropdown}
-                  className="text-base hover:text-primary transition duration-300 font-bold flex items-center"
-                >
-                  এডমিশন
-                  <FaChevronDown className="ml-1 w-4 h-4" />
-                </button>
-                {isAdmissionDropdownOpen && (
-                  <ul className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-50">
-                    {admissionMenuItems.map((item) => (
-                      <li key={item.href}>
-                        <Link
-                          href={item.href}
-                          onClick={handleMenuItemClick}
-                          className="block px-4 py-2 text-base hover:bg-gray-100 transition duration-300"
-                        >
-                          {item.label}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </li>
+            
               <li className="relative">
                 <button
                   onClick={toggleAcademicDropdown}
@@ -168,17 +154,18 @@ export default function Navbar() {
                   </ul>
                 )}
               </li>
+              
               <li className="relative">
                 <button
-                  onClick={toggleAboutDropdown}
+                  onClick={toggleMediaDropdown}
                   className="text-base hover:text-primary transition duration-300 font-bold flex items-center"
                 >
-                  আমাদের সম্পর্কে
+                  মিডিয়া
                   <FaChevronDown className="ml-1 w-4 h-4" />
                 </button>
-                {isAboutDropdownOpen && (
+                {isMediaDropdownOpen && (
                   <ul className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-50">
-                    {aboutMenuItems.map((item) => (
+                    {mediaMenuItems.map((item) => (
                       <li key={item.href}>
                         <Link
                           href={item.href}
@@ -202,22 +189,6 @@ export default function Navbar() {
               </li>
               <li>
                 <Link
-                  href="/videos"
-                  className="text-base hover:text-primary transition duration-300 font-bold"
-                >
-                  ভিডিও
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/blog"
-                  className="text-base hover:text-primary transition duration-300 font-bold"
-                >
-                  ব্লগপোষ্ট
-                </Link>
-              </li>
-              <li>
-                <Link
                   href="/contact"
                   className="text-base hover:text-primary transition duration-300 font-bold"
                 >
@@ -227,7 +198,7 @@ export default function Navbar() {
             </ul>
 
             <Button className="text-lg font-bold">
-              <Link href="/admission/apply">ভর্তি আবেদন</Link>
+              <Link href="/apply">ভর্তি আবেদন</Link>
             </Button>
           </div>
 
@@ -258,34 +229,13 @@ export default function Navbar() {
               <li>
                 <Link
                   href="/"
+                  onClick={handleMenuItemClick}
                   className="text-lg hover:text-primary transition duration-300 font-bold"
                 >
                   হোম
                 </Link>
               </li>
-              <li className="w-full">
-                <button
-                  onClick={toggleAdmissionDropdown}
-                  className="text-lg hover:text-primary transition duration-300 font-bold flex items-center justify-center w-full"
-                >
-                  এডমিশন
-                  <FaChevronDown className="ml-1 w-4 h-4" />
-                </button>
-                {isAdmissionDropdownOpen && (
-                  <div className="mt-2 bg-gray-50 py-2 w-full">
-                    {admissionMenuItems.map((item) => (
-                      <Link
-                        key={item.href}
-                        href={item.href}
-                        onClick={handleMenuItemClick}
-                        className="block px-4 py-2 text-sm hover:bg-primary/10 hover:text-primary text-center font-hind-siliguri"
-                      >
-                        {item.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </li>
+              
               <li className="w-full">
                 <button
                   onClick={toggleAcademicDropdown}
@@ -309,17 +259,18 @@ export default function Navbar() {
                   </div>
                 )}
               </li>
+              
               <li className="w-full">
                 <button
-                  onClick={toggleAboutDropdown}
+                  onClick={toggleMediaDropdown}
                   className="text-lg hover:text-primary transition duration-300 font-bold flex items-center justify-center w-full"
                 >
-                  আমাদের সম্পর্কে
+                  মিডিয়া
                   <FaChevronDown className="ml-1 w-4 h-4" />
                 </button>
-                {isAboutDropdownOpen && (
+                {isMediaDropdownOpen && (
                   <div className="mt-2 bg-gray-50 py-2 w-full">
-                    {aboutMenuItems.map((item) => (
+                    {mediaMenuItems.map((item) => (
                       <Link
                         key={item.href}
                         href={item.href}
@@ -335,6 +286,7 @@ export default function Navbar() {
               <li>
                 <Link
                   href="/books"
+                  onClick={handleMenuItemClick}
                   className="text-lg hover:text-primary transition duration-300 font-bold"
                 >
                   বইসমূহ
@@ -342,30 +294,15 @@ export default function Navbar() {
               </li>
               <li>
                 <Link
-                  href="/videos"
-                  className="text-lg hover:text-primary transition duration-300 font-bold"
-                >
-                  ভিডিও
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/blog"
-                  className="text-lg hover:text-primary transition duration-300 font-bold"
-                >
-                  ব্লগপোষ্ট
-                </Link>
-              </li>
-              <li>
-                <Link
                   href="/contact"
+                  onClick={handleMenuItemClick}
                   className="text-lg hover:text-primary transition duration-300 font-bold"
                 >
                   যোগাযোগ
                 </Link>
               </li>
               <Button className="text-lg font-bold">
-                <Link href="/admission/apply">ভর্তি আবেদন</Link>
+                <Link href="/admission/apply" onClick={handleMenuItemClick}>ভর্তি আবেদন</Link>
               </Button>
             </ul>
           </div>
