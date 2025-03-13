@@ -7,54 +7,54 @@ import { FaSearch } from "react-icons/fa"
 const videos = [
   {
     id: "1",
-    title: "ইসলামের মৌলিক শিক্ষা",
+    title: "মাসিক দ্বীনি হালাকায় শাইখ ড.শহিদুল্লাহ খান মাদানী হাফি",
     description: "এই ভিডিওতে ইসলামের মৌলিক শিক্ষা সম্পর্কে আলোচনা করা হয়েছে।",
-    url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    url: "https://www.youtube.com/watch?v=EWEZIT26jzI",
     duration: "45:30",
     date: "১০ জুন, ২০২৩",
     category: "ইসলামিক শিক্ষা"
   },
   {
     id: "2",
-    title: "কুরআন তিলাওয়াত",
+    title: " ক্বিরাত প্রশিক্ষণ",
     description: "সুন্দর কুরআন তিলাওয়াতের একটি নমুনা।",
-    url: "https://www.youtube.com/watch?v=21X5lGlDOfg",
+    url: "https://www.youtube.com/watch?v=5xFb5aH65rs",
     duration: "32:15",
     date: "১৫ জুন, ২০২৩",
     category: "কুরআন"
   },
   {
     id: "3",
-    title: "হাদিসের গুরুত্ব",
+    title: "শিক্ষক প্রশিক্ষণ অধিবেশন ২০২৫",
     description: "ইসলামে হাদিসের গুরুত্ব সম্পর্কে একটি আলোচনা।",
-    url: "https://www.youtube.com/watch?v=FjHGZj2IjBk",
+    url: "https://www.youtube.com/watch?v=xLFYzxbVhoQ",
     duration: "28:45",
     date: "২০ জুন, ২০২৩",
     category: "হাদিস"
   },
   {
     id: "4",
-    title: "ইসলামি আইন",
+    title: "নূরানী ছাত্রদের বক্তব্য প্রশিক্ষণ",
     description: "ইসলামি আইন সম্পর্কে বিস্তারিত আলোচনা।",
-    url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    url: "https://www.youtube.com/watch?v=8-o_BKXearY&t=4s",
     duration: "52:10",
     date: "২৫ জুন, ২০২৩",
     category: "ফিকাহ"
   },
   {
     id: "5",
-    title: "ইসলামি ইতিহাস",
+    title: "মাদরাসায় তিন ভাষা শিক্ষা",
     description: "ইসলামের প্রাথমিক যুগের ইতিহাস সম্পর্কে আলোচনা।",
-    url: "https://www.youtube.com/watch?v=21X5lGlDOfg",
+    url: "https://www.youtube.com/watch?v=UKY2nPso5kw",
     duration: "38:20",
     date: "৩০ জুন, ২০২৩",
     category: "ইতিহাস"
   },
   {
     id: "6",
-    title: "আরবি ভাষা শিক্ষা",
+    title: "ছোট্ট বন্ধুর সূরা ক্বদর তেলোয়াত",
     description: "আরবি ভাষার মৌলিক নিয়ম সম্পর্কে শিক্ষা।",
-    url: "https://www.youtube.com/watch?v=FjHGZj2IjBk",
+    url: "https://www.youtube.com/watch?v=R9unMVrcmPY",
     duration: "42:55",
     date: "৫ জুলাই, ২০২৩",
     category: "ভাষা"

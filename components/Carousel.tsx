@@ -5,7 +5,7 @@ import Image from "next/image"
 
 const slides = [
   {
-    image: "/images/slider/slider-1.jpg",
+    image: "/images/header/hero.jpg",
     title: "উৎকর্ষের ৫০ বছর",
     description: "হাবরুল উম্মাহ মডেল মাদরাসা : ১৯৭৩ থেকে জ্ঞান ও মূল্যবোধের প্রসারে নিয়োজিত",
   },

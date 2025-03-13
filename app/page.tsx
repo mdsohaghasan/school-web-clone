@@ -8,7 +8,7 @@ import { Gallery } from "@/components/Gallery"
 import { NoticeBoard } from "@/components/NoticeBoard"
 import { StatCard } from "@/components/StatCard"
 import { VideoPreview } from "@/components/VideoPreview"
-import { aboutSection, eventsSection, facultySection, statsSection } from "@/lib/contents"
+import { aboutSection, eventsSection, facultySection, statsSection, heroSection } from "@/lib/contents"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -16,12 +16,12 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      {/* <div
+      <div
         className="relative h-screen flex items-center justify-center bg-cover bg-center bg-fixed"
         style={{ backgroundImage: `url('${heroSection.backgroundImage}')` }}
       >
-        <div className="absolute inset-0 bg-black opacity-50"></div>
-        <div className="text-center text-white z-10">
+        {/* <div className="absolute inset-0 bg-black opacity-50"></div> */}
+        {/* <div className="text-center text-white z-10">
           <h1 className="text-5xl md:text-7xl font-bold mb-4 text-primary-foreground animate-fade-in-up">
             {heroSection.title}
           </h1>
@@ -34,10 +34,10 @@ export default function Home() {
           >
             {heroSection.ctaText}
           </Link>
-        </div>
-      </div> */}
+        </div> */}
+      </div>
 
-     <Carousel></Carousel>
+     {/* <Carousel></Carousel> */}
  
       <main>
         {/* About Section */}
