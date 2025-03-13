@@ -13,27 +13,15 @@ import Link from "next/link"
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="bg-background">
       {/* Hero Section */}
       <div
-        className="relative h-screen flex items-center justify-center bg-cover bg-center bg-fixed"
-        style={{ backgroundImage: `url('${heroSection.backgroundImage}')` }}
+        className="h-screen w-full h-full bg-contain bg-center bg-no-repeat" 
+        style={{ 
+          backgroundImage: `url('${heroSection.backgroundImage}')`,
+        }}
       >
-        {/* <div className="absolute inset-0 bg-black opacity-50"></div> */}
-        {/* <div className="text-center text-white z-10">
-          <h1 className="text-5xl md:text-7xl font-bold mb-4 text-primary-foreground animate-fade-in-up">
-            {heroSection.title}
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 animate-fade-in-up animation-delay-300">
-            {heroSection.subtitle}
-          </p>
-          <Link
-            href="#about"
-            className="bg-primary text-primary-foreground px-8 py-3 rounded-full text-lg font-semibold hover:bg-primary/90 transition duration-300 animate-fade-in-up animation-delay-600 font-hind-siliguri"
-          >
-            {heroSection.ctaText}
-          </Link>
-        </div> */}
+        
       </div>
 
      {/* <Carousel></Carousel> */}
