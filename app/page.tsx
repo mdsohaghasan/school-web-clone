@@ -1,6 +1,5 @@
 "use client"
 
-import { Carousel } from "@/components/Carousel"
 import { EventCard } from "@/components/EventCard"
 import { FacultyCard } from "@/components/FacultyCard"
 import { FeaturedBooks } from "@/components/FeaturedBooks"
